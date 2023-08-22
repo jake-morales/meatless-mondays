@@ -8,17 +8,17 @@
 </head>
 
 <body>
-    <form method="post" action="/.netlify/functions/response-submission">
-        <label>USC Email:<input type="email" /></label>
+    <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data">
+        <label>USC Email:<input type="email" name="uscEmail"/></label>
         <br/>
         <br/>
         <label for="imageFile">Take photo of your plate:
-            <input type="file" id="imageFile" capture="environment" accept="image/*" />
+            <input type="file" id="imageFile" name="picPlate" capture="environment" accept="image/*" />
         </label>
         <br/>
         <br/>
-        <fieldset>
-            <legend>Questions</legend>
+        <!-- <fieldset>
+            <legend>Questions</legend> -->
             <label>Did your meal include vegetables?
                 <label><input type="radio" name="hasVegetables" value="yes">Yes</label>
                 <label><input type="radio" name="hasVegetables" value="no">No</label>
@@ -49,7 +49,7 @@
                 <label><input type="radio" name="hasOtherProteins" value="no">No</label>
             </label>
             <br/>
-        </fieldset>
+        <!-- </fieldset> -->
         
         </br>
         <input type="submit" value="Submit">
