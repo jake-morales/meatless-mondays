@@ -25,7 +25,7 @@ function parseMultipartForm(event) {
     const fields = {};
 
     // let's instantiate our busboy instance!
-    const bb = busboy({ headers: req.headers });
+    const bb = busboy({ headers: event.headers });
 
     // before parsing anything, we need to set up some handlers.
     // whenever busboy comes across a file ...
