@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meatless Mondays</title>
 </head>
+
 <body>
-    <form>
-        <label for="imageFile">Take photo of your plate:</label>
-        <input type="file" id="imageFile" capture="environment" accept="image/*" />
+    <form method="post" action="/.netlify/functions/response-submision">
+        <label>USC Email:<input type="email" /></label>
+        <br/>
+        <br/>
+        <label for="imageFile">Take photo of your plate:
+            <input type="file" id="imageFile" capture="environment" accept="image/*" />
+        </label>
+        <br/>
+        <br/>
+        <fieldset>
+            <legend>Questions</legend>
+            <label>Did your meal include vegetables?
+                <label><input type="radio" name="hasVegetables" value="yes">Yes</label>
+                <label><input type="radio" name="hasVegetables" value="no">No</label>
+            </label>
+            <br/>
+            <label>Did your meal include carbs?
+                <label><input type="radio" name="hasCarbs" value="yes">Yes</label>
+                <label><input type="radio" name="hasCarbs" value="no">No</label>
+            </label>
+            <br/>
+            <label>Did your meal include beef?
+                <label><input type="radio" name="hasBeef" value="yes">Yes</label>
+                <label><input type="radio" name="hasBeef" value="no">No</label>
+            </label>
+            <br/>
+            <label>Did your meal include non-beef meat?
+                <label><input type="radio" name="hasNonBeef" value="yes">Yes</label>
+                <label><input type="radio" name="hasNonBeef" value="no">No</label>
+            </label>
+            <br/>
+            <label>Did your meal include milk or cheese?
+                <label><input type="radio" name="hasDairy" value="yes">Yes</label>
+                <label><input type="radio" name="hasDairy" value="no">No</label>
+            </label>
+            <br/>
+            <label>Did your meal include protein that was not any of those above?
+                <label><input type="radio" name="hasOtherProteins" value="yes">Yes</label>
+                <label><input type="radio" name="hasOtherProteins" value="no">No</label>
+            </label>
+            <br/>
+        </fieldset>
+        
+        </br>
         <input type="submit" value="Submit">
     </form>
 </body>
+
 </html>
