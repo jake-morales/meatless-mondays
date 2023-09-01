@@ -17,6 +17,8 @@ const handler = async (event) => {
       + datetime.toLocaleTimeString("en-US", {timeZone: "America/Los_Angeles"})
 
     const id = await drive.uploadFile(fileName, fields['picPlate'].content)
+    // Idea: Add a link with ID to the image in Google Drive
+    // Example Link structure: https://drive.google.com/file/d/1oBblLrtb6wq9BU2QEBUrMwOCjpsV_HLZ/view?usp=sharing
 
     await drive.addData(fields, datetime)
 
