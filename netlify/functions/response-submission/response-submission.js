@@ -8,15 +8,21 @@ const handler = async (event) => {
 
   try {
     const fields = await parseFile.parseMultipartForm(event)
-    // console.log(Object.keys(fields))
+    
+    var datetime = new Date();
+    const fileName = fields['uscEmail']
+      + "-"
+      + datetime.toLocaleDateString("en-US", {timeZone: "America/Los_Angeles"})
+      + "-"
+      + datetime.toLocaleTimeString("en-US", {timeZone: "America/Los_Angeles"})
 
-    const id = await drive.uploadFile(fields['uscEmail'], fields['picPlate'].content)
+    const id = await drive.uploadFile(fileName, fields['picPlate'].content)
 
-    await drive.addData(fields)
+    await drive.addData(fields, datetime)
 
     return {
       statusCode: 200,
-      body: "Submitted. Thank you! :)",
+      body: "Submitted. Thank you!",
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,

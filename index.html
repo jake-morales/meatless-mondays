@@ -7,27 +7,29 @@
   <link rel="stylesheet" href="assets/css/solid.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meatless Mondays</title>
+  <title>Dining Hall Recall Study</title>
 </head>
 
 <body>
   <div class="container p-3 has-background-light">
     <h4 class="subtitle is-4 has-text-centered">This is the last part of the study. After you complete and submit this page, you will be automatically entered into the raffle.</h4>
-    <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data">
+    <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data"
+      onsubmit="spinSubmit()"
+      >
       <div class="field">
         <label class="label">USC Email</label>
         <div class="control has-icons-left">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
-          <input class="input" name="uscEmail" type="email" placeholder="burbidge@usc.edu">
+          <input class="input" name="uscEmail" type="email" placeholder="burbidge@usc.edu" required>
         </div>
       </div>
       <div class="field">
         <label class="label">Please take a photo of your food.</label>
         <div class="file">
           <label class="file-label">
-            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)">
+            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)" required>
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-camera"></i>
@@ -46,11 +48,11 @@
         <label class="label">Did your meal include vegetables?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasVegetables" value="yes">
+            <input type="radio" name="hasVegetables" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasVegetables" value="no">
+            <input type="radio" name="hasVegetables" value="no" required>
             No
           </label>
         </div>
@@ -59,11 +61,11 @@
         <label class="label">Did your meal include carbs?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasCarbs" value="yes">
+            <input type="radio" name="hasCarbs" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasCarbs" value="no">
+            <input type="radio" name="hasCarbs" value="no" required>
             No
           </label>
         </div>
@@ -72,11 +74,11 @@
         <label class="label">Did your meal include beef?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasBeef" value="yes">
+            <input type="radio" name="hasBeef" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasBeef" value="no">
+            <input type="radio" name="hasBeef" value="no" required>
             No
           </label>
         </div>
@@ -85,11 +87,11 @@
         <label class="label">Did your meal include meat that wasn't beef?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasNonBeef" value="yes">
+            <input type="radio" name="hasNonBeef" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasNonBeef" value="no">
+            <input type="radio" name="hasNonBeef" value="no" required>
             No
           </label>
         </div>
@@ -98,11 +100,11 @@
         <label class="label">Did your meal include milk or cheese?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasDairy" value="yes">
+            <input type="radio" name="hasDairy" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasDairy" value="no">
+            <input type="radio" name="hasDairy" value="no" required>
             No
           </label>
         </div>
@@ -111,18 +113,18 @@
         <label class="label">Did your meal include protein that wasn't any of those mentioned above?</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="hasOtherProteins" value="yes">
+            <input type="radio" name="hasOtherProteins" value="yes" required>
             Yes
           </label>
           <label class="radio">
-            <input type="radio" name="hasOtherProteins" value="no">
+            <input type="radio" name="hasOtherProteins" value="no" required>
             No
           </label>
         </div>
       </div>
       <div class="field">
         <div class="control">
-          <button class="button is-primary">Submit</button>
+          <button id="submitButton" class="button is-primary">Submit</button>
         </div>
       </div>
     </form>
@@ -132,6 +134,9 @@
       const elem = document.getElementById('output')
       elem.src = window.URL.createObjectURL(input.files[0])
       elem.classList.remove("is-hidden")
+    }
+    function spinSubmit(){
+      document.getElementById("submitButton").classList.add("is-loading")
     }
   </script>
 </body>

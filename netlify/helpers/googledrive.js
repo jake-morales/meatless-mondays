@@ -34,8 +34,7 @@ const uploadFile = async function (filename, fileData) {
     return file.data.id
 }
 
-const addData = async function (data) {
-    var datetime = new Date();
+const addData = async function (data, datetime) {
     const values = [
         [
             data.uscEmail,
