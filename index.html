@@ -12,8 +12,7 @@
 
 <body>
   <div class="container p-3 has-background-light">
-    <h2 class="title is-2 has-text-centered">Meatless Mondays</h2>
-    <h4 class="subtitle is-4 has-text-centered">By Alysia Burbidge</h4>
+    <h4 class="subtitle is-4 has-text-centered">This is the last part of the study. After you complete and submit this page, you will be automatically entered into the raffle.</h4>
     <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data">
       <!-- <label>USC Email:<input type="email" name="uscEmail"/></label> -->
       <div class="field">
@@ -32,7 +31,7 @@
         <label class="label">Please take a photo of your food.</label>
         <div class="file">
           <label class="file-label">
-            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*">
+            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)">
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
@@ -44,6 +43,9 @@
           </label>
         </div>
       </div>
+      <figure id="figure" class="image is-128x128 is-hidden">
+        <img id="output" src="">
+      </figure>
       <div class="field">
         <label class="label">Did your meal include vegetables?</label>
         <div class="control">
@@ -110,7 +112,7 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Did your meal include protein that wasn't any of those above?</label>
+        <label class="label">Did your meal include protein that wasn't any of those mentioned above?</label>
         <div class="control">
           <label class="radio">
             <input type="radio" name="hasOtherProteins" value="yes">
@@ -129,6 +131,12 @@
       </div>
     </form>
   </div>
+  <script>
+    function showPhoto(input){
+      document.getElementById('output').src = window.URL.createObjectURL(input.files[0])
+      document.getElementById('figure').classList.remove("is-hidden")
+    }
+  </script>
 </body>
 
 </html>
