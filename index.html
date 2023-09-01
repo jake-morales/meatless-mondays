@@ -14,7 +14,6 @@
   <div class="container p-3 has-background-light">
     <h4 class="subtitle is-4 has-text-centered">This is the last part of the study. After you complete and submit this page, you will be automatically entered into the raffle.</h4>
     <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data">
-      <!-- <label>USC Email:<input type="email" name="uscEmail"/></label> -->
       <div class="field">
         <label class="label">USC Email</label>
         <div class="control has-icons-left">
@@ -24,9 +23,6 @@
           <input class="input" name="uscEmail" type="email" placeholder="burbidge@usc.edu">
         </div>
       </div>
-      <!-- <label for="imageFile">Take photo of your plate:
-                <input type="file" id="imageFile" name="picPlate" capture="environment" accept="image/*" />
-            </label> -->
       <div class="field">
         <label class="label">Please take a photo of your food.</label>
         <div class="file">
@@ -34,7 +30,7 @@
             <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)">
             <span class="file-cta">
               <span class="file-icon">
-                <i class="fas fa-upload"></i>
+                <i class="fas fa-camera"></i>
               </span>
               <span class="file-label">
                 Camera
@@ -43,9 +39,9 @@
           </label>
         </div>
       </div>
-      <figure id="figure" class="image is-128x128 is-hidden">
-        <img id="output" src="">
-      </figure>
+      <div class="field">
+        <img id="output" class="image is-hidden" style="height: 128px; width:auto" src="">
+      </div>
       <div class="field">
         <label class="label">Did your meal include vegetables?</label>
         <div class="control">
@@ -133,8 +129,9 @@
   </div>
   <script>
     function showPhoto(input){
-      document.getElementById('output').src = window.URL.createObjectURL(input.files[0])
-      document.getElementById('figure').classList.remove("is-hidden")
+      const elem = document.getElementById('output')
+      elem.src = window.URL.createObjectURL(input.files[0])
+      elem.classList.remove("is-hidden")
     }
   </script>
 </body>
