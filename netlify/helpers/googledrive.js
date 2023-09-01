@@ -53,7 +53,7 @@ const addData = async function (data, datetime) {
     }
     const result = await sheets.spreadsheets.values.append({
         spreadsheetId: "1-vHgiKGaHqf5b-7lBxMwYqbqXFveSZ3S5Z2zate_yC8",
-        range: "Sheet1!A1:I1", // Make sure it matches the top column of spreasheet
+        range: process.env.SHEET_RANGE, // Make sure it matches the top column of spreasheet
         valueInputOption: "USER_ENTERED",
         resource: resource
       });
