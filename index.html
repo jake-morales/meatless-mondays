@@ -126,6 +126,7 @@
         <div class="control">
           <button id="submitButton" class="button is-primary">Submit</button>
         </div>
+        <p id="help" class="help is-hidden">Submitting...this can take up to 15 seconds.</p>
       </div>
     </form>
   </div>
@@ -137,6 +138,8 @@
     }
     function spinSubmit(){
       document.getElementById("submitButton").classList.add("is-loading")
+      document.getElementById("help").classList.remove("is-hidden")
+
     }
   </script>
 </body>
