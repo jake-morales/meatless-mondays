@@ -30,7 +30,11 @@ const handler = async (event) => {
       // isBase64Encoded: true,
     }
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    if (error.response.data.error_description){
+      return { statusCode: 500, body: error.response.data.error_description }
+    } else {
+      return { statusCode: 500, body: error.toString() }
+    }
   }
 }
 
