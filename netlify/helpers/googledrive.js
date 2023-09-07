@@ -52,11 +52,11 @@ const addData = async function (data, datetime) {
         values
     }
     const result = await sheets.spreadsheets.values.append({
-        spreadsheetId: "1-vHgiKGaHqf5b-7lBxMwYqbqXFveSZ3S5Z2zate_yC8",
+        spreadsheetId: process.env.SHEET_ID,
         range: process.env.SHEET_RANGE, // Make sure it matches the top column of spreasheet
         valueInputOption: "USER_ENTERED",
         resource: resource
-      });
+    });
 }
 
 exports.uploadFile = uploadFile
