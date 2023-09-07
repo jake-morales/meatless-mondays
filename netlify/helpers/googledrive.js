@@ -8,6 +8,8 @@ const clientId = process.env.CLIENT_ID
 const clientSecret = process.env.CLIENT_SECRET
 const redirectUri = 'https://developers.google.com/oauthplayground'
 const refreshToken = process.env.REFRESH_TOKEN
+const sheetID = process.env.SHEET_ID
+const sheetRange = process.env.SHEET_RANGE
 
 const oauth2Client = new google.auth.OAuth2(
     clientId,
@@ -52,8 +54,8 @@ const addData = async function (data, datetime) {
         values
     }
     const result = await sheets.spreadsheets.values.append({
-        spreadsheetId: process.env.SHEET_ID,
-        range: process.env.SHEET_RANGE, // Make sure it matches the top column of spreasheet
+        spreadsheetId: sheetID,
+        range: sheetRange, // Make sure it matches the top column of spreasheet
         valueInputOption: "USER_ENTERED",
         resource: resource
     });
