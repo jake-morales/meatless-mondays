@@ -1,8 +1,11 @@
 const drive = require('../../helpers/googledrive')
 const parseFile = require('../../helpers/parseFile')
+const fs = require('fs');
 
 // Run functions locally: (Don't forget to set env vars)
 // netlify dev
+
+const fileData = fs.readFileSync("success.html", "utf8");
 
 const handler = async (event) => {
 
@@ -24,10 +27,7 @@ const handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: "Submitted. Thank you!",
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
+      body: fileData,
     }
   } catch (error) {
     if (error.response.data.error_description){
