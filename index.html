@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="container p-3 has-background-light">
+  <div class="container p-3 pb-6 has-background-light">
     <h4 class="subtitle is-4 has-text-centered">This is the last part of the study. After you complete and submit this page, you will be automatically entered into the raffle.</h4>
     <form method="post" action="/.netlify/functions/response-submission" enctype="multipart/form-data"
       onsubmit="spinSubmit()"
@@ -29,9 +29,7 @@
         <label class="label">Please take a photo of your food.</label>
         <div class="file">
           <label class="file-label">
-            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)" required
-              onclick="(this) => this.value = null"  
-            >
+            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)" required>
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-camera"></i>
@@ -126,7 +124,7 @@
       </div>
       <div class="field">
         <div class="control">
-          <button id="submitButton" class="button is-primary">Submit</button>
+          <button id="submitButton" class="button is-primary" disabled>Submit</button>
         </div>
         <p id="help" class="help is-hidden">Submitting...this can take up to 15 seconds.</p>
       </div>
@@ -137,6 +135,7 @@
       const elem = document.getElementById('output')
       elem.src = window.URL.createObjectURL(input.files[0])
       elem.classList.remove("is-hidden")
+      document.getElementById("submitButton").disabled = false
     }
     function spinSubmit(){
       document.getElementById("submitButton").classList.add("is-loading")
