@@ -29,7 +29,9 @@
         <label class="label">Please take a photo of your food.</label>
         <div class="file">
           <label class="file-label">
-            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)" required>
+            <input class="file-input" type="file" name="picPlate" capture="environment" accept="image/*" onchange="showPhoto(this)" required
+              onclick="(this) => this.value = ''"  
+            >
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-camera"></i>
