@@ -1,6 +1,12 @@
 const drive = require('../../helpers/googledrive')
 const parseFile = require('../../helpers/parseFile')
-const fs = require('fs');
+const Sentry = require('@sentry/node')
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  environment: process.env.ENVIRONMENT,
+  sampleRate: 1.0,
+})
 
 // Run functions locally: (Don't forget to set env vars)
 // netlify dev
@@ -36,7 +42,6 @@ const fileData = `
 `
 
 const handler = async (event) => {
-
   try {
     const fields = await parseFile.parseMultipartForm(event)
     
@@ -57,12 +62,9 @@ const handler = async (event) => {
       statusCode: 200,
       body: fileData,
     }
-  } catch (error) {
-    if (error.response.data.error_description){
-      return { statusCode: 500, body: error.response.data.error_description }
-    } else {
-      return { statusCode: 500, body: error.toString() }
-    }
+  } catch (e) {
+    Sentry.captureException(e)
+    return { statusCode: 500, body: "Something went wrong. Please try again later." }
   }
 }
 
