@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@sentry/node": "^7.68.0",
     "busboy": "^1.6.0",
     "googleapis": "^126.0.0"
   }
