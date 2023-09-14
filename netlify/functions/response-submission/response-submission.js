@@ -44,6 +44,9 @@ const fileData = `
 const handler = async (event) => {
   try {
     const fields = await parseFile.parseMultipartForm(event)
+
+    Sentry.setUser({email: fields['uscEmail']})
+    Sentry.setExtra('headers', event.headers)
     
     var datetime = new Date();
     const fileName = fields['uscEmail']
