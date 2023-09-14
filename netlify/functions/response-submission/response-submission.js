@@ -9,7 +9,7 @@ Sentry.init({
 })
 
 // Run functions locally: (Don't forget to set env vars)
-// netlify dev
+// netlify dev 
 
 const fileData = `
 <!DOCTYPE html>
